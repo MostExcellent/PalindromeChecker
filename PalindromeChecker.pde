@@ -1,7 +1,7 @@
 public void setup()
 {
   String lines[] = loadStrings("palindromes.txt");
-  println("there are " + lines.length + " lines");
+  System.out.println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
     if(palindrome(lines[i])==true)
@@ -16,7 +16,13 @@ public void setup()
 }
 public boolean palindrome(String word)
 {
-  //your code here
-  return false;
+  char[] letters = word.replaceAll("[^a-zA-Z]", "").toLowerCase().toCharArray();
+  for (int i = 0; i < letters.length; i++) {
+    if(letters[i] != letters[letters.length-(1+i)])
+    {
+      return false;
+    }
+  }
+  return true;
 }
 
